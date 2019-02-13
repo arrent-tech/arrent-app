@@ -9,3 +9,23 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+// ION-TAB-BAR
+// ------------------------------------------
+
+ion-tab-bar {
+  border-top-width: 2px;
+  background: white;
+  ion-tab-button {
+    ion-label {
+      text-transform: uppercase;
+      font-size: 10px;
+      font-weight: bold;
+    }
+
+    &:not(.tab-selected) {
+      color: #D7D8DA;
+      fill: #D7D8DA;
+    }
+  }
+}
