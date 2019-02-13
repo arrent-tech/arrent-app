@@ -10,8 +10,11 @@
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
 
-// ION-TAB-BAR
+// Arrent Ionic Theme
 // ------------------------------------------
+
+
+// ION-TAB-BAR
 
 ion-tab-bar {
   border-top-width: 2px;
@@ -28,4 +31,47 @@ ion-tab-bar {
       fill: #D7D8DA;
     }
   }
+}
+
+
+// ION-HEADER
+
+ion-header {
+  &:after {
+    content: none;
+    display: none;
+  }
+  border-bottom: 2px solid var(--ion-tab-bar-border-color, var(--ion-border-color, var(--ion-color-step-150,rgba(0,0,0,0.07))));
+  box-shadow: 0px 0px 3px rgba(0,0,0,0.04);
+}
+
+
+// ION-SEARCHBAR
+
+ion-searchbar {
+  .searchbar-input-container .searchbar-input {
+    border-radius: 50px !important;
+    padding-inline-end: 0px;
+    padding-right: 0px;
+    border: 1px solid rgba(0,0,0,0.07);
+    box-shadow: inset 0px 0px 3px rgba(0,0,0,0.12);
+    font-size: 12px;
+    font-weight: bold;
+  }
+  padding: 3px 24px !important;
+}
+
+
+// ION-CARD
+
+ion-card {
+  box-shadow: 0px 2px 6px rgba(0,0,0,0.16) !important;
+}
+
+.app__main-router {
+  pointer-events: none;
+}
+
+.flex-auto {
+  flex: 1 1 auto;
 }

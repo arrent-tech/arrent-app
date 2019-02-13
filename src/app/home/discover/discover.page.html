@@ -1,9 +1,32 @@
 <ion-header>
   <ion-toolbar>
-    <ion-title>discover</ion-title>
+    <ion-searchbar [placeholder]="'Tente Terras em Mato Grosso'"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-
+  <h1 class="page__title">Que tipo de Arrendamento você procura?</h1>
+  <ion-row>
+    <ion-col>
+      <ion-card class="page__card flex-auto">
+        <img src="assets/images/field.png" />
+        <ion-card-header>
+          Agricultura
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+    <ion-col>
+      <ion-card class="page__card flex-auto">
+        <img src="assets/images/cow.png" />
+        <ion-card-header>
+          Pecuária
+        </ion-card-header>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <h1 class="page__title">Comece anunciando suas terras</h1>
+  <ion-row>
+    <ion-card class="page__card flex-auto">
+    </ion-card>
+  </ion-row>
 </ion-content>
