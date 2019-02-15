@@ -1,0 +1,22 @@
+.page__header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-left: 16px;
+
+  input {
+    width: 100%;
+    font-size: 24px;
+    border: none;
+    outline: none;
+  }
+}
+
+.page__round-button {
+  font-size: 24px;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

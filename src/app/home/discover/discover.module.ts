@@ -6,6 +6,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 
 import { DiscoverPage } from './discover.page';
+import { SearchModalComponent } from './search-modal/search-modal.component';
 
 const routes: Routes = [
   {
@@ -21,6 +22,7 @@ const routes: Routes = [
     IonicModule,
     RouterModule.forChild(routes)
   ],
-  declarations: [DiscoverPage]
+  declarations: [DiscoverPage, SearchModalComponent],
+  entryComponents: [ SearchModalComponent ]
 })
 export class DiscoverPageModule {}

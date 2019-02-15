@@ -68,6 +68,19 @@ ion-card {
   box-shadow: 0px 2px 6px rgba(0,0,0,0.16) !important;
 }
 
+ion-item {
+  ion-label {
+    white-space: inherit !important;
+  }
+}
+
+.app__content-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
 .app__main-router {
   pointer-events: none;
 }

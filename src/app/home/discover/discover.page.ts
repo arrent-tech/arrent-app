@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import {SearchModalComponent} from './search-modal/search-modal.component';
 
 @Component({
   selector: 'app-discover',
@@ -7,9 +9,16 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DiscoverPage implements OnInit {
 
-  constructor() { }
+  constructor(private modalController: ModalController) { }
 
   ngOnInit() {
   }
 
+  async openSearchModal() {
+    const modal = await this.modalController.create({
+      component: SearchModalComponent
+    });
+
+    modal.present();
+  }
 }

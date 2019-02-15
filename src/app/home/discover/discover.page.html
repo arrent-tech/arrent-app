@@ -1,11 +1,11 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar (click)="openSearchModal()">
     <ion-searchbar [placeholder]="'Tente Terras em Mato Grosso'"></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
-  <h1 class="page__title">Que tipo de Arrendamento você procura?</h1>
+  <h1 class="app__content-title">Que tipo de Arrendamento você procura?</h1>
   <ion-row>
     <ion-col>
       <ion-card class="page__card flex-auto">
@@ -24,7 +24,7 @@
       </ion-card>
     </ion-col>
   </ion-row>
-  <h1 class="page__title">Comece anunciando suas terras</h1>
+  <h1 class="app__content-title">Comece anunciando suas terras</h1>
   <ion-row>
     <ion-card class="page__card flex-auto">
     </ion-card>
