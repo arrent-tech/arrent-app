@@ -1,4 +1,5 @@
-import {Component, ElementRef, AfterContentInit, ViewChild} from '@angular/core';
+import { Component, ElementRef, AfterContentInit, ViewChild } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 
 @Component({
   selector: 'app-search-modal',
@@ -9,10 +10,14 @@ export class SearchModalComponent implements AfterContentInit {
 
   @ViewChild('searchInput') searchInput: ElementRef<HTMLInputElement>;
 
-  constructor() {}
+  constructor(private modalCtrl: ModalController) {}
 
   ngAfterContentInit() {
     this.searchInput.nativeElement.focus();
+  }
+
+  close() {
+    this.modalCtrl.dismiss();
   }
 
 }
