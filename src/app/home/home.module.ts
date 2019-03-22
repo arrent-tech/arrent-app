@@ -19,6 +19,10 @@ import { HomePage } from './home.page';
           {
             path: 'discover',
             loadChildren: './discover/discover.module#DiscoverPageModule'
+          },
+          {
+            path: 'login',
+            loadChildren: '../login/login.module#LoginPageModule'
           }
         ]
       },
