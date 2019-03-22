@@ -1,32 +1,30 @@
-import {CUSTOM_ELEMENTS_SCHEMA, NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
-import { RouterModule } from '@angular/router';
+import {RouterModule, Routes} from '@angular/router';
 
 import { HomePage } from './home.page';
+
+const routes: Routes = [
+  {
+    path: '',
+    component: HomePage,
+    children: [
+      {
+        path: 'discover',
+        loadChildren: './discover/discover.module#DiscoverPageModule'
+      },
+    ]
+  },
+];
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild([
-      {
-        path: '',
-        component: HomePage,
-        children: [
-          {
-            path: 'discover',
-            loadChildren: './discover/discover.module#DiscoverPageModule'
-          },
-          {
-            path: 'login',
-            loadChildren: '../login/login.module#LoginPageModule'
-          }
-        ]
-      },
-    ])
+    RouterModule.forChild(routes)
   ],
   declarations: [HomePage]
 })

@@ -4,7 +4,10 @@
 
 export const environment = {
   production: false,
-  hmr: true
+  hmr: true,
+  apiUrl: 'http://arrent-api.eastus.cloudapp.azure.com:1337/parse',
+  parseKey: '',
+  parseAppId: ''
 };
 
 /*
