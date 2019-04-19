@@ -1,0 +1,20 @@
+ion-content {
+    --background: var(--ion-color-primary);
+}
+
+ion-card {
+  margin: 0px !important;
+}
+
+.page__background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/images/bg-login.png');
+  background-size: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+

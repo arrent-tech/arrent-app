@@ -1,0 +1,56 @@
+<ion-content padding>
+  <div class="page__background"></div>
+  <div class="app__flex-column" justify-content-between>
+    <div>
+      <ion-button *ngIf="!showSignupForm"
+                  icon-only
+                  (click)="close()"
+                  [@fadeInOnEnter]>
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+      <ion-button *ngIf="showSignupForm"
+                  icon-only
+                  (click)="toggleSignupForm()"
+                  [@fadeInOnEnter]>
+        <ion-icon slot="icon-only" name="arrow-back"></ion-icon>
+      </ion-button>
+    </div>
+
+    <div *ngIf="!showSignupForm"
+         class="app__flex-column" justify-content-center
+         [@fadeInUpOnEnter]>
+      <ion-button icon color="light" shape="round" (click)="loginWithFacebook()">
+        <ion-icon slot="start" name="logo-facebook"></ion-icon>
+        Continuar com o facebook
+      </ion-button>
+
+      <ion-button icon fill="outline" color="light" shape="round" (click)="toggleSignupForm()">
+        Criar uma conta
+      </ion-button>
+    </div>
+
+    <div *ngIf="showSignupForm"
+         class="app__flex-column" justify-content-center
+         [@fadeInUpOnEnter]>
+      <ion-card>
+        <ion-card-content>
+          <ion-item>
+            <ion-label position="stacked">Nome Completo</ion-label>
+            <ion-input [(ngModel)]="user.fullName"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Email</ion-label>
+            <ion-input type="email" [(ngModel)]="user.email"></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label position="stacked">Senha</ion-label>
+            <ion-input type="password" [(ngModel)]="user.password"></ion-input>
+          </ion-item>
+        </ion-card-content>
+      </ion-card>
+      <ion-button color="light" shape="round" class="ion-margin-top" (click)="signUp()">
+        Cadastrar-me!
+      </ion-button>
+    </div>
+  </div>
+</ion-content>

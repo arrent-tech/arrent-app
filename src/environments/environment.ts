@@ -6,8 +6,8 @@ export const environment = {
   production: false,
   hmr: true,
   apiUrl: 'http://arrent-api.eastus.cloudapp.azure.com:1337/parse',
-  parseKey: '',
-  parseAppId: ''
+  parseAppId: 'arrent-prod',
+  facebookAppId: '1213562705499321',
 };
 
 /*

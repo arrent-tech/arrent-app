@@ -5,14 +5,14 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { DiscoverPage } from './discover.page';
-import { SearchModalComponent } from './search-modal/search-modal.component';
-import { LandAdvertisementModule } from '../../land-advertisement/land-advertisement.module';
+import { AuthModule } from '../auth/auth.module';
+
+import { LoginPage } from './login.page';
 
 const routes: Routes = [
   {
     path: '',
-    component: DiscoverPage
+    component: LoginPage
   }
 ];
 
@@ -22,9 +22,9 @@ const routes: Routes = [
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    LandAdvertisementModule,
+    AuthModule
   ],
-  declarations: [DiscoverPage, SearchModalComponent],
-  entryComponents: [ SearchModalComponent ]
+  declarations: [LoginPage]
 })
-export class DiscoverPageModule {}
+export class LoginPageModule {
+}
