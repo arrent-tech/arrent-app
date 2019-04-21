@@ -53,7 +53,22 @@ export class LoginPage implements OnInit {
       await this.authService.signUp(this.user);
       this.navCtrl.back();
     } catch (err) {
-      console.error(err);
+      if (err.code === 202) {
+        const errToast =
+          await this.toastCtrl.create({
+            message: 'Já existe um usuário cadastrado com esse email. Você esqueceu sua senha? Entre em contato conosco!',
+            duration: 3000,
+          });
+        errToast.present();
+      } else {
+        const errToast =
+          await this.toastCtrl.create({
+            message: 'Erro inesperado!',
+            duration: 3000,
+          });
+        errToast.present();
+        console.error(err);
+      }
     } finally {
       await loading.dismiss();
     }
