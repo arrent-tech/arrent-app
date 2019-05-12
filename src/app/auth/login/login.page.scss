@@ -1,0 +1,31 @@
+ion-content {
+  --background: var(--ion-color-primary);
+  position: relative;
+}
+
+.page__title {
+  h1 {
+    font-size: 32px !important;
+    font-weight: bold !important;
+  }
+}
+
+.page__background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-image: url('/assets/images/bg-login.png');
+  background-size: cover;
+  opacity: 0.5;
+  z-index: 0;
+}
+
+.page__inner-content {
+  position: absolute;
+  width: 100%;
+  padding: 16px;
+  height: auto;
+}
+

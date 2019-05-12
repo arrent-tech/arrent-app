@@ -4,6 +4,7 @@ export interface UserModel {
   username: string;
   name: string;
   email: string;
+  phone: string;
   privateData: UserDataModel;
 }
 
@@ -15,6 +16,7 @@ export interface UserRegisterRequest {
   fullName: string;
   password: string;
   email: string;
+  phone: string;
 }
 
 export class UserData extends Parse.Object {

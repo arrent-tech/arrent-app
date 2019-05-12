@@ -1,0 +1,38 @@
+<ion-header class="page__header">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button color="light" defaultHref="/home/discover">
+      </ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-slides class="page__photos-slides">
+  <ion-slide *ngFor="let photoUrl of landDetails.photos">
+    <img [src]="photoUrl" height="200" />
+  </ion-slide>
+</ion-slides>
+
+<ion-content padding>
+  <h1 no-margin>{{ landDetails.title }}</h1>
+  <ion-list>
+    <ion-item>
+      <ion-icon slot="start" name="contact"></ion-icon>
+      <ion-label>
+        <h3>{{ landDetails.readableLocation }}</h3>
+        <p *ngIf="owner">Terras anunciadas por {{ owner.attributes.name }}</p>
+      </ion-label>
+    </ion-item>
+    <ion-item>
+      <p>{{ landDetails.description }}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>
+
+
+<div class="page__fixed-footer">
+  <ion-text color="primary">Falar com {{ owner ? owner.attributes.name : '' }}</ion-text>
+  <ion-button>
+      <a [href]="getClickToChatURL()" target="_blank" class="app__text-white">Fazer proposta</a>
+  </ion-button>
+</div>

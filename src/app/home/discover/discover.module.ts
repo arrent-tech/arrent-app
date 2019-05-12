@@ -12,7 +12,7 @@ import { LandAdvertisementModule } from '../../land-advertisement/land-advertise
 const routes: Routes = [
   {
     path: '',
-    component: DiscoverPage
+    component: DiscoverPage,
   }
 ];
 
@@ -24,7 +24,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     LandAdvertisementModule,
   ],
-  declarations: [DiscoverPage, SearchModalComponent],
+  declarations: [
+    DiscoverPage,
+    SearchModalComponent
+  ],
   entryComponents: [ SearchModalComponent ]
 })
 export class DiscoverPageModule {}

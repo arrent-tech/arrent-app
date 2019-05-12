@@ -13,6 +13,7 @@ import * as Parse from 'parse';
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { environment } from '../environments/environment';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [ AppComponent ],
@@ -23,6 +24,7 @@ import { environment } from '../environments/environment';
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
     AppRoutingModule,
+    AuthModule,
   ],
   providers: [
     StatusBar,

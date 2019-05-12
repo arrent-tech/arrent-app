@@ -15,8 +15,7 @@ const routes: Routes = [
     component: HomePage,
     children: [
       { path: 'discover', loadChildren: './discover/discover.module#DiscoverPageModule' },
-      { path: 'profile', canActivate: [AuthGuard], loadChildren: './discover/discover.module#DiscoverPageModule'
-      }
+      { path: 'profile', canActivate: [AuthGuard], loadChildren: './discover/discover.module#DiscoverPageModule' }
     ]
   },
 ];

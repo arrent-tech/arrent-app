@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IonSpinner, LoadingController, NavController, ToastController } from '@ionic/angular';
 import { fadeInOnEnterAnimation, fadeInUpOnEnterAnimation } from 'angular-animations';
 
-import { AuthService } from '../auth/auth.service';
-import { UserRegisterRequest } from '../auth/auth.model';
+import { AuthService } from '../auth.service';
+import { UserRegisterRequest } from '../auth.model';
 
 @Component({
   selector: 'app-login-page',
@@ -16,10 +16,13 @@ import { UserRegisterRequest } from '../auth/auth.model';
 })
 export class LoginPage implements OnInit {
   showSignupForm: boolean;
+  hasUserLoginError: boolean;
+
   user: UserRegisterRequest = {
     fullName: null,
     email: null,
     password: null,
+    phone: null,
   };
 
   constructor(
@@ -42,6 +45,21 @@ export class LoginPage implements OnInit {
 
   close() {
     this.navCtrl.back();
+  }
+
+  async login() {
+    this.hasUserLoginError = false;
+    try {
+      await this.authService.login({
+        username: this.user.email,
+        password: this.user.password
+      });
+      this.navCtrl.back();
+    } catch (err) {
+      if (err.code === 101) {
+        this.hasUserLoginError = true;
+      }
+    }
   }
 
   async signUp() {

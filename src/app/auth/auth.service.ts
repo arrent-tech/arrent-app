@@ -3,11 +3,13 @@ import * as Parse from 'parse';
 import { environment } from '../../environments/environment';
 import { Facebook } from './facebook';
 import { UserData, UserRegisterRequest } from './auth.model';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  currentUser$ = new Subject<Parse.User>();
   private facebookApi;
   private currentUser: Parse.User;
 
@@ -31,6 +33,7 @@ export class AuthService {
     user.set('username', userRegistration.email);
     user.set('password', userRegistration.password);
     user.set('email', userRegistration.email);
+    user.set('phone', '55' + userRegistration.phone);
     user.set('name', userRegistration.fullName.split(' ')[0]);
 
     await user.signUp(null);
@@ -41,7 +44,21 @@ export class AuthService {
     user.set('privateData', userData);
     this.currentUser = user;
     console.log(user);
+    this.currentUser$.next(user);
     return user;
+  }
+
+  async login({ username, password }) {
+    const user = await Parse.User.logIn(username, password);
+    this.currentUser = user;
+    this.currentUser$.next(user);
+    return user;
+  }
+
+  async logout() {
+    await Parse.User.logOut();
+    this.currentUser = null;
+    this.currentUser$.next(null);
   }
 
   async loginWithFacebook() {

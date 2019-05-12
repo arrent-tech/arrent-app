@@ -2,7 +2,12 @@
   <ion-toolbar align-items-center>
     <div class="page__header-wrapper">
       <form (ngSubmit)="search()">
-        <input #searchInput autofocus type="search" placeholder="Digite algo..." (keyup)="listSuggestions()" />
+        <input #searchInput
+               name="searchQuery"
+               [(ngModel)]="searchQuery"
+               type="search"
+               placeholder="Digite algo..."
+               autofocus />
       </form>
     </div>
 
@@ -13,32 +18,16 @@
 </ion-header>
 
 <ion-content padding>
-  <div *ngIf="!landAdvertisementList">
+  <div *ngIf="!searchQuery && recentSearchesList && recentSearchesList.length > 0">
     <h1 class="app__content-title">Buscas recentes</h1>
     <ion-list>
-      <ion-item>
+      <ion-item button *ngFor="let recentQuery of recentSearchesList" (click)="search(recentQuery)">
         <ion-icon slot="start" name="time"></ion-icon>
-        <ion-label>Terras para arrendamento de Soja em Ijuí, RS, Brasil</ion-label>
-      </ion-item>
-      <ion-item>
-        <ion-icon slot="start" name="time"></ion-icon>
-        <ion-label>Terras para arrendamento Pecuário em Mato Grosso, Brasil</ion-label>
+        <ion-label>{{ recentQuery }}</ion-label>
       </ion-item>
     </ion-list>
   </div>
-
-  <div *ngIf="landAdvertisementList && landAdvertisementList.length > 0">
-    <h1 class="app__content-title">Sugeridos</h1>
-    <ion-list>
-      <ion-item *ngFor="let advertisement of landAdvertisementList">
-        <!--<ion-icon slot="start" name="time"></ion-icon>-->
-        <ion-label>{{ advertisement.title }} em Ijuí, RS, Brasil</ion-label>
-      </ion-item>
-    </ion-list>
-  </div>
-
-  <div *ngIf="landAdvertisementList && landAdvertisementList.length === 0">
-    <h1 class="app__content-title">Sem resultados para</h1>
-    <div class="ion-text-center">"{{ searchTerm }}"</div>
+  <div *ngIf="!searchQuery && recentSearchesList && recentSearchesList.length === 0">
+    <h1 class="app__content-title">Realize a sua primeira busca!</h1>
   </div>
 </ion-content>

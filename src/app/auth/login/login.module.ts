@@ -5,7 +5,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { AuthModule } from '../auth/auth.module';
+import { AuthModule } from '../auth.module';
 
 import { LoginPage } from './login.page';
 

@@ -1,4 +1,4 @@
-import { ModuleWithProviders, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
@@ -10,5 +10,4 @@ import { AuthService } from './auth.service';
     CommonModule
   ]
 })
-export class AuthModule {
-}
+export class AuthModule {}

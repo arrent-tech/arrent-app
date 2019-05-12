@@ -1,14 +1,18 @@
 <ion-header>
   <ion-toolbar (click)="openSearchModal()">
-    <ion-searchbar [placeholder]="'Tente Terras em Mato Grosso'"></ion-searchbar>
+    <ion-searchbar
+      [placeholder]="'Tente Terras em Mato Grosso'"
+      [value]="searchQuery"
+    ></ion-searchbar>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
+<!-- Initial Page -->
+<ion-content padding *ngIf="!searchQuery">
   <h1 class="app__content-title">Que tipo de Arrendamento você procura?</h1>
   <ion-row>
     <ion-col>
-      <ion-card class="page__card app__flex-auto">
+      <ion-card class="page__card app__flex-auto" no-margin (click)="search('Terras para Agricultura')">
         <img src="assets/images/field.png" />
         <ion-card-header>
           Agricultura
@@ -16,7 +20,7 @@
       </ion-card>
     </ion-col>
     <ion-col>
-      <ion-card class="page__card app__flex-auto">
+      <ion-card class="page__card app__flex-auto" no-margin (click)="search('Terras para Pecuária')">
         <img src="assets/images/cow.png" />
         <ion-card-header>
           Pecuária
@@ -24,9 +28,47 @@
       </ion-card>
     </ion-col>
   </ion-row>
-  <h1 class="app__content-title">Comece anunciando suas terras</h1>
+  <h1 class="app__content-title" *ngIf="userLandAdvertisements && userLandAdvertisements.length === 0">
+    Comece anunciando suas terras
+  </h1>
+  <h1 class="app__content-title" *ngIf="userLandAdvertisements && userLandAdvertisements.length > 0">
+    Seus anúncios
+  </h1>
   <ion-row>
-    <ion-card class="page__card app__flex-auto">
+    <ion-card class="page__card app__flex-auto" no-margin
+              [routerLink]="[ '/land/new/edit' ]"
+              *ngIf="userLandAdvertisements && userLandAdvertisements.length === 0"
+    >
+      <div class="page__card__image">
+        <img src="assets/images/man.png" />
+        <h1 class="page__card__image__overlay">
+          Seu primeiro Anúncio Grátis
+        </h1>
+      </div>
     </ion-card>
+
+    <ion-col size="6" *ngFor="let land of userLandAdvertisements">
+      <ion-card class="page__card app__flex-auto" no-margin
+                [routerLink]="[ '/land/'+ land.id + '/edit' ]"
+      >
+        <img [src]="land.photos[0]" />
+      </ion-card>
+      <small>{{ land.title }}</small>
+    </ion-col>
+  </ion-row>
+</ion-content>
+
+<!-- Search Results -->
+<ion-content padding *ngIf="searchQuery">
+  <h1 class="app__content-title">Locais</h1>
+  <ion-row>
+    <ion-col size="6" *ngFor="let land of searchResults">
+      <ion-card class="page__card app__flex-auto" no-margin
+                [routerLink]="[ '/land/'+ land.id ]"
+      >
+        <img [src]="land.photos[0]" />
+      </ion-card>
+      <small>{{ land.title }}</small>
+    </ion-col>
   </ion-row>
 </ion-content>

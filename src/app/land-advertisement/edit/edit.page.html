@@ -1,0 +1,56 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/home/discover">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>{{ landDetails.id ? 'Editar Anúncio' : 'Novo Anúncio' }}</ion-title>
+    <ion-buttons slot="secondary">
+      <ion-button color="primary" [disabled]="landForm.invalid" (click)="publish()">
+        <ion-icon slot="icon-only" name="checkmark"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form #landForm="ngForm">
+  <ion-list>
+    <ion-item>
+      <ion-label position="stacked">Título</ion-label>
+      <ion-input name="land[title]" [(ngModel)]="landDetails.title" required></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Descrição</ion-label>
+      <ion-textarea name="land[description]" [(ngModel)]="landDetails.description" required></ion-textarea>
+    </ion-item>
+    <ion-item lines="none">
+      <ion-label position="stacked">Fotos</ion-label>
+      <div class="page__photo-container">
+        <ion-card class="page__card-photo" *ngFor="let photo of loadedPhotos">
+          <img [src]="photo.url" />
+        </ion-card>
+        <ion-card class="page__card-photo page__card-photo--upload" (click)="uploadPhotoInput.click()">
+          <input type="file" accept="image/*" #uploadPhotoInput (change)="loadPhoto($event)"/>
+          <ion-icon name="add"></ion-icon>
+        </ion-card>
+      </div>
+    </ion-item>
+    <ion-item>
+      <ion-label position="stacked">Local</ion-label>
+      <ion-input
+        name="selectedGeolocationText"
+        [(ngModel)]="landDetails.readableLocation"
+        (keyup)="handleInputSearchLocation($event)"
+        (blur)="this.geolocationResults = null">
+      </ion-input>
+      <input name="land[location]" [(ngModel)]="landDetails.location" required hidden>
+    </ion-item>
+    <ion-list inset *ngIf="this.geolocationResults">
+      <ion-item button *ngFor="let geolocation of this.geolocationResults" (click)="selectGeolocation(geolocation)">
+        <p text-nowrap>{{ geolocation.display_name }}</p>
+      </ion-item>
+    </ion-list>
+  </ion-list>
+  </form>
+</ion-content>

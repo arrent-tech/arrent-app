@@ -2,7 +2,7 @@
   <ion-router-outlet name="home" class="app__main-router"></ion-router-outlet>
 
   <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="messages">
+    <ion-tab-button tab="messages" disabled>
       <ion-icon name="chatbubbles"></ion-icon>
       <ion-label>Mensagens</ion-label>
     </ion-tab-button>
@@ -12,7 +12,7 @@
       <ion-label>Explorar</ion-label>
     </ion-tab-button>
 
-    <ion-tab-button tab="profile">
+    <ion-tab-button tab="profile" [disabled]="user">
       <ion-icon name="person"></ion-icon>
       <ion-label>Perfil</ion-label>
     </ion-tab-button>

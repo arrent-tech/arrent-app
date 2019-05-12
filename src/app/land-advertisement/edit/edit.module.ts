@@ -5,12 +5,13 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SearchResultsPage } from './search-results.page';
+import { EditPage } from './edit.page';
+import { GeolocationModule } from '../../geolocation/geolocation.module';
 
 const routes: Routes = [
   {
     path: '',
-    component: SearchResultsPage
+    component: EditPage
   }
 ];
 
@@ -19,8 +20,9 @@ const routes: Routes = [
     CommonModule,
     FormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    GeolocationModule,
   ],
-  declarations: [SearchResultsPage]
+  declarations: [EditPage]
 })
-export class SearchResultsPageModule {}
+export class EditPageModule {}

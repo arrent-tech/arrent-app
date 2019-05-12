@@ -1,0 +1,22 @@
+.page__photo-container {
+  display: flex;
+  width: 100%;
+  height: 20vh;
+  overflow-y: auto;
+  .page__card-photo {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 33%;
+    &.page__card-photo--upload input {
+      display: none;
+    }
+  }
+}
+
+.page__map {
+  width: 100%;
+  height: 270px;
+}
+
